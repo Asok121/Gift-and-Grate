@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Order - Gift & Grate | Premium Gifting Experience</title>
+  <meta name="description" content="Track your Gift & Grate order status and delivery information.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Additional styles specific to the track order page */
+    .track-order-section {
+      padding: var(--spacing-xl) 0;
+      background-color: var(--color-lightgray);
+      min-height: 80vh;
+    }
+    
+    .track-order-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: var(--radius-md);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-lg);
+    }
+    
+    .track-form {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    @media (max-width: 480px) {
+      .track-form {
+        flex-direction: column;
+      }
+    }
+    
+    .track-input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-primary);
+    }
+    
+    .track-input:focus {
+      outline: none;
+      border-color: var(--color-rosegold);
+    }
+    
+    .track-result {
+      display: none;
+      margin-top: var(--spacing-lg);
+    }
+    
+    .track-result.active {
+      display: block;
+    }
+    
+    .order-info {
+      background-color: var(--color-lightpink);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .order-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
+    
+    @media (min-width: 768px) {
+      .order-info-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .order-info-item h4 {
+      font-size: 0.9rem;
+      margin-bottom: var(--spacing-xs);
+      color: var(--color-gray);
+    }
+    
+    .order-info-item p {
+      font-weight: 600;
+    }
+    
+    .track-steps {
+      margin-top: var(--spacing-lg);
+    }
+    
+    .track-progress {
+      position: relative;
+      margin-left: 15px;
+    }
+    
+    .track-progress-line {
+      position: absolute;
+      left: 7px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background-color: var(--color-border);
+      z-index: 1;
+    }
+    
+    .track-step {
+      position: relative;
+      padding-left: 30px;
+      padding-bottom: var(--spacing-lg);
+      z-index: 2;
+    }
+    
+    .track-step:last-child {
+      padding-bottom: 0;
+    }
+    
+    .track-step-icon {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: white;
+      border: 2px solid var(--color-border);
+    }
+    
+    .track-step.completed .track-step-icon {
+      background-color: var(--color-rosegold);
+      border-color: var(--color-rosegold);
+    }
+    
+    .track-step.active .track-step-icon {
+      border-color: var(--color-rosegold);
+      border-width: 3px;
+    }
+    
+    .track-step-content h4 {
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .track-step-date {
+      font-size: 0.9rem;
+      color: var(--color-gray);
+    }
+    
+    .track-step-desc {
+      margin-top: var(--spacing-xs);
+      font-size: 0.9rem;
+    }
+    
+    .track-empty {
+      text-align: center;
+      padding: var(--spacing-lg) 0;
+    }
+    
+    .track-empty-icon {
+      font-size: 4rem;
+      color: var(--color-border);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <!-- Logo -->
+        <a href="index.html" class="logo">
+          <span class="brand-name">Gift & Grate</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="categories.html" class="nav-link">Categories</a>
+          <a href="occasions.html" class="nav-link">Occasions</a>
+          <a href="bestsellers.html" class="nav-link">Bestsellers</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Desktop Right Icons -->
+        <div class="desktop-icons">
+          <button aria-label="Search" class="icon-button">
+            <i class="fas fa-search"></i>
+          </button>
+          <a href="account.html" aria-label="Account" class="icon-button">
+            <i class="fas fa-user"></i>
+          </a>
+          <a href="wishlist.html" aria-label="Wishlist" class="icon-button">
+            <i class="fas fa-heart"></i>
+          </a>
+          <a href="cart.html" aria-label="Cart" class="icon-button cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="mobile-nav-toggle">
+          <a href="cart.html" class="icon-button cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+          </a>
+          <button id="menu-toggle" aria-label="Toggle Menu" class="icon-button">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-header">
+        <span class="brand-name">Gift & Grate</span>
+        <button id="close-menu" aria-label="Close Menu" class="icon-button">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="categories.html" class="mobile-nav-link">Categories</a>
+        <a href="occasions.html" class="mobile-nav-link">Occasions</a>
+        <a href="bestsellers.html" class="mobile-nav-link">Bestsellers</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        <div class="mobile-icons">
+          <a href="account.html" class="mobile-icon-link">
+            <i class="fas fa-user"></i>
+            <span>Account</span>
+          </a>
+          <a href="wishlist.html" class="mobile-icon-link">
+            <i class="fas fa-heart"></i>
+            <span>Wishlist</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Track Order Section -->
+    <section class="track-order-section">
+      <div class="container">
+        <div class="track-order-container">
+          <h1 class="section-title">Track Your Order</h1>
+          <p class="text-center mb-4">Enter your order ID to track your delivery status.</p>
+          
+          <form id="trackForm" class="track-form">
+            <input type="text" id="orderID" class="track-input" placeholder="Enter your Order ID (e.g., GG12345)" required>
+            <button type="submit" class="btn btn-primary">Track Order</button>
+          </form>
+          
+          <!-- Empty State (Initially shown) -->
+          <div id="trackEmpty" class="track-empty">
+            <div class="track-empty-icon">
+              <i class="fas fa-box-open"></i>
+            </div>
+            <h3>No Order Information</h3>
+            <p>Enter your order ID above to check the status of your delivery.</p>
+          </div>
+          
+          <!-- Track Result (Hidden initially, shown after form submission) -->
+          <div id="trackResult" class="track-result">
+            <!-- Order Info -->
+            <div class="order-info">
+              <h3 class="mb-4">Order Information</h3>
+              <div class="order-info-grid">
+                <div class="order-info-item">
+                  <h4>Order ID</h4>
+                  <p id="resultOrderID">GG12345</p>
+                </div>
+                
+                <div class="order-info-item">
+                  <h4>Order Date</h4>
+                  <p id="resultOrderDate">May 26, 2025</p>
+                </div>
+                
+                <div class="order-info-item">
+                  <h4>Delivery Date</h4>
+                  <p id="resultDeliveryDate">May 28, 2025</p>
+                </div>
+                
+                <div class="order-info-item">
+                  <h4>Status</h4>
+                  <p id="resultStatus">In Transit</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Track Steps -->
+            <div class="track-steps">
+              <h3 class="mb-4">Tracking Timeline</h3>
+              
+              <div class="track-progress">
+                <div class="track-progress-line"></div>
+                
+                <div class="track-step completed">
+                  <div class="track-step-icon"></div>
+                  <div class="track-step-content">
+                    <h4>Order Placed</h4>
+                    <p class="track-step-date">May 26, 2025 - 10:30 AM</p>
+                    <p class="track-step-desc">Your order has been received and confirmed.</p>
+                  </div>
+                </div>
+                
+                <div class="track-step completed">
+                  <div class="track-step-icon"></div>
+                  <div class="track-step-content">
+                    <h4>Order Processed</h4>
+                    <p class="track-step-date">May 26, 2025 - 02:15 PM</p>
+                    <p class="track-step-desc">Your order has been processed and is being prepared.</p>
+                  </div>
+                </div>
+                
+                <div class="track-step active">
+                  <div class="track-step-icon"></div>
+                  <div class="track-step-content">
+                    <h4>In Transit</h4>
+                    <p class="track-step-date">May 27, 2025 - 11:45 AM</p>
+                    <p class="track-step-desc">Your order is on its way to the delivery address.</p>
+                  </div>
+                </div>
+                
+                <div class="track-step">
+                  <div class="track-step-icon"></div>
+                  <div class="track-step-content">
+                    <h4>Delivered</h4>
+                    <p class="track-step-date">Expected: May 28, 2025</p>
+                    <p class="track-step-desc">Your order will be delivered to the recipient.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Column -->
+        <div class="footer-column">
+          <h3 class="footer-title">Gift & Grate</h3>
+          <p class="footer-text">
+            Premium gifting experience for all your special occasions. Based in Coimbatore, delivering joy nationwide.
+          </p>
+          <div class="social-icons">
+            <a href="https://instagram.com/gift_and_grate" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-column">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="bestsellers.html">Bestsellers</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="track-order.html">Track Order</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+          </ul>
+        </div>
+        
+        <!-- Categories -->
+        <div class="footer-column">
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="categories/flowers.html">Flowers</a></li>
+            <li><a href="categories/cakes.html">Cakes</a></li>
+            <li><a href="categories/hampers.html">Hampers</a></li>
+            <li><a href="categories/personalized.html">Personalized Gifts</a></li>
+            <li><a href="categories/corporate.html">Corporate Gifts</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-column">
+          <h4 class="footer-heading">Contact Us</h4>
+          <ul class="contact-info">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Gift Street, Coimbatore, Tamil Nadu, India - 641001</span>
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 98765 43210</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>hello@giftandgrate.com</span>
+            </li>
+            <li class="mt-4">
+              <a href="https://wa.me/919876543210" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                <span>Chat on WhatsApp</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2025 Gift & Grate. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="shipping.html">Shipping Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+  <script>
+    // Track Order Form Handling
+    document.addEventListener('DOMContentLoaded', function() {
+      const trackForm = document.getElementById('trackForm');
+      const trackEmpty = document.getElementById('trackEmpty');
+      const trackResult = document.getElementById('trackResult');
+      const resultOrderID = document.getElementById('resultOrderID');
+      
+      if (trackForm) {
+        trackForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const orderID = document.getElementById('orderID').value;
+          
+          if (!orderID) {
+            alert('Please enter an order ID');
+            return;
+          }
+          
+          // In a real application, you would fetch the order data from a server
+          // For this demo, we'll just show the sample tracking result
+          resultOrderID.textContent = orderID;
+          
+          // Hide empty state and show results
+          trackEmpty.style.display = 'none';
+          trackResult.classList.add('active');
+          
+          // Scroll to results
+          trackResult.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

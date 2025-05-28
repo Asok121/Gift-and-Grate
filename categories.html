@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift Categories - Gift & Grate | Premium Gifting Experience</title>
+  <meta name="description" content="Explore our wide range of gift categories including flowers, cakes, hampers, personalized gifts, and more.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Additional styles specific to the categories page */
+    .categories-banner {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1689&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: var(--spacing-lg);
+      padding: var(--spacing-xl) 0;
+    }
+    
+    @media (min-width: 480px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .category-card-large {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+      background-color: white;
+    }
+    
+    .category-card-large:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .category-image-large {
+      height: 250px;
+      overflow: hidden;
+    }
+    
+    .category-image-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-normal);
+    }
+    
+    .category-card-large:hover .category-image-large img {
+      transform: scale(1.05);
+    }
+    
+    .category-content {
+      padding: var(--spacing-lg);
+      text-align: center;
+    }
+    
+    .category-title {
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .category-description {
+      color: var(--color-gray);
+      margin-bottom: var(--spacing-md);
+      font-size: 0.9rem;
+    }
+    
+    .category-button {
+      margin-top: var(--spacing-sm);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <!-- Logo -->
+        <a href="index.html" class="logo">
+          <span class="brand-name">Gift & Grate</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="categories.html" class="nav-link">Categories</a>
+          <a href="occasions.html" class="nav-link">Occasions</a>
+          <a href="bestsellers.html" class="nav-link">Bestsellers</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Desktop Right Icons -->
+        <div class="desktop-icons">
+          <button aria-label="Search" class="icon-button">
+            <i class="fas fa-search"></i>
+          </button>
+          <a href="account.html" aria-label="Account" class="icon-button">
+            <i class="fas fa-user"></i>
+          </a>
+          <a href="wishlist.html" aria-label="Wishlist" class="icon-button">
+            <i class="fas fa-heart"></i>
+          </a>
+          <a href="cart.html" aria-label="Cart" class="icon-button cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="mobile-nav-toggle">
+          <a href="cart.html" class="icon-button cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+          </a>
+          <button id="menu-toggle" aria-label="Toggle Menu" class="icon-button">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-header">
+        <span class="brand-name">Gift & Grate</span>
+        <button id="close-menu" aria-label="Close Menu" class="icon-button">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="categories.html" class="mobile-nav-link">Categories</a>
+        <a href="occasions.html" class="mobile-nav-link">Occasions</a>
+        <a href="bestsellers.html" class="mobile-nav-link">Bestsellers</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        <div class="mobile-icons">
+          <a href="account.html" class="mobile-icon-link">
+            <i class="fas fa-user"></i>
+            <span>Account</span>
+          </a>
+          <a href="wishlist.html" class="mobile-icon-link">
+            <i class="fas fa-heart"></i>
+            <span>Wishlist</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Categories Banner -->
+    <section class="categories-banner">
+      <div class="container text-center">
+        <h1 class="hero-title">Gift Categories</h1>
+        <p class="hero-description">Explore our wide range of gifting options for every occasion</p>
+      </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="categories-section">
+      <div class="container">
+        <div class="categories-grid">
+          <!-- Flowers Category -->
+          <div class="category-card-large">
+            <div class="category-image-large">
+              <img src="https://images.unsplash.com/photo-1454262041357-5d96f50a2f27?q=80&w=1740&auto=format&fit=crop" alt="Flowers">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Flowers</h3>
+              <p class="category-description">Fresh and beautiful flower arrangements, bouquets, and baskets for every occasion.</p>
+              <a href="categories/flowers.html" class="btn btn-primary category-button">Explore Flowers</a>
+            </div>
+          </div>
+          
+          <!-- Cakes Category -->
+          <div class="category-card-large">
+            <div class="category-image-large">
+              <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1689&auto=format&fit=crop" alt="Cakes">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Cakes</h3>
+              <p class="category-description">Delicious cakes in various flavors and designs for birthdays, anniversaries, and celebrations.</p>
+              <a href="categories/cakes.html" class="btn btn-primary category-button">Explore Cakes</a>
+            </div>
+          </div>
+          
+          <!-- Hampers Category -->
+          <div class="category-card-large">
+            <div class="category-image-large">
+              <img src="https://images.unsplash.com/photo-1607114222016-d31bd86cb4f1?q=80&w=1740&auto=format&fit=crop" alt="Hampers">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Hampers</h3>
+              <p class="category-description">Curated gift hampers and baskets filled with premium goodies and treats.</p>
+              <a href="categories/hampers.html" class="btn btn-primary category-button">Explore Hampers</a>
+            </div>
+          </div>
+          
+          <!-- Personalized Gifts Category -->
+          <div class="category-card-large">
+            <div class="category-image-large">
+              <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1738&auto=format&fit=crop" alt="Personalized Gifts">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Personalized Gifts</h3>
+              <p class="category-description">Custom and personalized gifts that add a special touch to your celebrations.</p>
+              <a href="categories/personalized.html" class="btn btn-primary category-button">Explore Personalized</a>
+            </div>
+          </div>
+          
+          <!-- Corporate Gifts Category -->
+          <div class="category-card-large">
+            <div class="category-image-large">
+              <img src="https://images.unsplash.com/photo-1665099305963-1a2c4f39f59d?q=80&w=1740&auto=format&fit=crop" alt="Corporate Gifts">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Corporate Gifts</h3>
+              <p class="category-description">Professional gifting solutions for business events, employees, and clients.</p>
+              <a href="categories/corporate.html" class="btn btn-primary category-button">Explore Corporate</a>
+            </div>
+          </div>
+          
+          <!-- Plants Category -->
+          <div class="category-card-large">
+            <div class="category-image-large">
+              <img src="https://images.unsplash.com/photo-1604762524889-3e2fcc145683?q=80&w=1471&auto=format&fit=crop" alt="Plants">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Plants</h3>
+              <p class="category-description">Indoor and outdoor plants that make long-lasting and meaningful gifts.</p>
+              <a href="categories/plants.html" class="btn btn-primary category-button">Explore Plants</a>
+            </div>
+          </div>
+          
+          <!-- Chocolates Category -->
+          <div class="category-card-large">
+            <div class="category-image-large">
+              <img src="https://images.unsplash.com/photo-1584360652767-5e139309c2fe?q=80&w=1480&auto=format&fit=crop" alt="Chocolates">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Chocolates</h3>
+              <p class="category-description">Premium chocolates and confectionery for sweet celebrations and indulgence.</p>
+              <a href="categories/chocolates.html" class="btn btn-primary category-button">Explore Chocolates</a>
+            </div>
+          </div>
+          
+          <!-- Jewelry Category -->
+          <div class="category-card-large">
+            <div class="category-image-large">
+              <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1740&auto=format&fit=crop" alt="Jewelry">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Jewelry</h3>
+              <p class="category-description">Elegant and stylish jewelry pieces that make memorable gifts for loved ones.</p>
+              <a href="categories/jewelry.html" class="btn btn-primary category-button">Explore Jewelry</a>
+            </div>
+          </div>
+          
+          <!-- Combo Gifts Category -->
+          <div class="category-card-large">
+            <div class="category-image-large">
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=1740&auto=format&fit=crop" alt="Combo Gifts">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Combo Gifts</h3>
+              <p class="category-description">Perfect combinations of flowers, cakes, and more for an extraordinary gifting experience.</p>
+              <a href="categories/combos.html" class="btn btn-primary category-button">Explore Combos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Column -->
+        <div class="footer-column">
+          <h3 class="footer-title">Gift & Grate</h3>
+          <p class="footer-text">
+            Premium gifting experience for all your special occasions. Based in Coimbatore, delivering joy nationwide.
+          </p>
+          <div class="social-icons">
+            <a href="https://instagram.com/gift_and_grate" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-column">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="bestsellers.html">Bestsellers</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="track-order.html">Track Order</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+          </ul>
+        </div>
+        
+        <!-- Categories -->
+        <div class="footer-column">
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="categories/flowers.html">Flowers</a></li>
+            <li><a href="categories/cakes.html">Cakes</a></li>
+            <li><a href="categories/hampers.html">Hampers</a></li>
+            <li><a href="categories/personalized.html">Personalized Gifts</a></li>
+            <li><a href="categories/corporate.html">Corporate Gifts</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-column">
+          <h4 class="footer-heading">Contact Us</h4>
+          <ul class="contact-info">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Gift Street, Coimbatore, Tamil Nadu, India - 641001</span>
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 98765 43210</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>hello@giftandgrate.com</span>
+            </li>
+            <li class="mt-4">
+              <a href="https://wa.me/919876543210" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                <span>Chat on WhatsApp</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2025 Gift & Grate. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="shipping.html">Shipping Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

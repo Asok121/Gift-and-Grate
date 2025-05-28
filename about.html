@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Gift & Grate | Premium Gifting Experience</title>
+  <meta name="description" content="Learn about Gift & Grate, Coimbatore's premium gifting brand offering flowers, cakes, hampers, and personalized gifts.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Additional styles specific to the about page */
+    .about-hero {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1740&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    
+    .about-content {
+      padding: var(--spacing-xl) 0;
+    }
+    
+    .about-row {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    @media (min-width: 768px) {
+      .about-row {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+    
+    .about-image {
+      flex: 1;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: var(--spacing-lg);
+      margin: var(--spacing-xl) 0;
+    }
+    
+    @media (min-width: 480px) {
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .value-card {
+      background-color: var(--color-lightpink);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    
+    .value-icon {
+      font-size: 2.5rem;
+      color: var(--color-rosegold);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .team-section {
+      background-color: var(--color-lightgray);
+      padding: var(--spacing-xl) 0;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: var(--spacing-lg);
+    }
+    
+    @media (min-width: 480px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .team-member {
+      background-color: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .team-image {
+      height: 250px;
+    }
+    
+    .team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .team-info {
+      padding: var(--spacing-md);
+      text-align: center;
+    }
+    
+    .team-name {
+      font-size: 1.2rem;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .team-role {
+      color: var(--color-rosegold);
+      font-weight: 500;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+    }
+    
+    .team-social a {
+      color: var(--color-gray);
+      transition: color var(--transition-normal);
+    }
+    
+    .team-social a:hover {
+      color: var(--color-rosegold);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <!-- Logo -->
+        <a href="index.html" class="logo">
+          <span class="brand-name">Gift & Grate</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="categories.html" class="nav-link">Categories</a>
+          <a href="occasions.html" class="nav-link">Occasions</a>
+          <a href="bestsellers.html" class="nav-link">Bestsellers</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Desktop Right Icons -->
+        <div class="desktop-icons">
+          <button aria-label="Search" class="icon-button">
+            <i class="fas fa-search"></i>
+          </button>
+          <a href="account.html" aria-label="Account" class="icon-button">
+            <i class="fas fa-user"></i>
+          </a>
+          <a href="wishlist.html" aria-label="Wishlist" class="icon-button">
+            <i class="fas fa-heart"></i>
+          </a>
+          <a href="cart.html" aria-label="Cart" class="icon-button cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="mobile-nav-toggle">
+          <a href="cart.html" class="icon-button cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+          </a>
+          <button id="menu-toggle" aria-label="Toggle Menu" class="icon-button">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-header">
+        <span class="brand-name">Gift & Grate</span>
+        <button id="close-menu" aria-label="Close Menu" class="icon-button">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="categories.html" class="mobile-nav-link">Categories</a>
+        <a href="occasions.html" class="mobile-nav-link">Occasions</a>
+        <a href="bestsellers.html" class="mobile-nav-link">Bestsellers</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        <div class="mobile-icons">
+          <a href="account.html" class="mobile-icon-link">
+            <i class="fas fa-user"></i>
+            <span>Account</span>
+          </a>
+          <a href="wishlist.html" class="mobile-icon-link">
+            <i class="fas fa-heart"></i>
+            <span>Wishlist</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- About Hero -->
+    <section class="about-hero">
+      <div class="container text-center">
+        <h1 class="hero-title">Our Story</h1>
+        <p class="hero-description">Crafting memorable gifting experiences since 2020</p>
+      </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+      <div class="container">
+        <div class="about-row">
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=1740&auto=format&fit=crop" alt="Gift & Grate Story">
+          </div>
+          <div class="about-text">
+            <h2 class="section-title">Who We Are</h2>
+            <p>Gift & Grate is Coimbatore's premier gifting destination, specializing in curated gift experiences for every occasion. Founded in 2020, we started with a simple mission: to transform the art of gifting into a memorable experience.</p>
+            <p>What began as a small home-based business has grown into a beloved brand trusted by thousands of customers across India. Our commitment to quality, attention to detail, and personalized service sets us apart.</p>
+            <p>Based in the cultural heart of Tamil Nadu, we blend traditional Indian gifting values with contemporary design aesthetics, creating gifts that are both meaningful and modern.</p>
+          </div>
+        </div>
+
+        <div class="about-row">
+          <div class="about-text">
+            <h2 class="section-title">Our Mission</h2>
+            <p>We believe that gifting is an art - a beautiful expression of emotions that deserves to be crafted with care. Our mission is to help you celebrate life's special moments with gifts that create lasting memories.</p>
+            <p>Every gift from Gift & Grate is carefully curated to ensure that it delights the recipient and conveys your sentiments perfectly. We source the finest materials, work with local artisans, and prioritize sustainable practices to create gifts that are as responsible as they are beautiful.</p>
+            <p>As we continue to grow, we remain committed to our founding principles: exceptional quality, personalized service, and timely delivery.</p>
+          </div>
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1607114222016-d31bd86cb4f1?q=80&w=1740&auto=format&fit=crop" alt="Gift & Grate Mission">
+          </div>
+        </div>
+
+        <!-- Values Section -->
+        <h2 class="section-title">Our Values</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3>Crafted with Love</h3>
+            <p>Every gift is created with passion and attention to detail, ensuring a special experience for both the giver and receiver.</p>
+          </div>
+          
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h3>Quality First</h3>
+            <p>We never compromise on quality. From the freshest flowers to the finest chocolates, we source only the best.</p>
+          </div>
+          
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Eco-Friendly</h3>
+            <p>We are committed to sustainable practices, using eco-friendly packaging and supporting local suppliers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+      <div class="container">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-subtitle">The passionate people behind Gift & Grate</p>
+        
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="team-image">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ananya Sharma">
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Ananya Sharma</h3>
+              <p class="team-role">Founder & Creative Director</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member">
+            <div class="team-image">
+              <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Rahul Patel">
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Rahul Patel</h3>
+              <p class="team-role">Operations Manager</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="team-member">
+            <div class="team-image">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Desai">
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Priya Desai</h3>
+              <p class="team-role">Floral Designer</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Column -->
+        <div class="footer-column">
+          <h3 class="footer-title">Gift & Grate</h3>
+          <p class="footer-text">
+            Premium gifting experience for all your special occasions. Based in Coimbatore, delivering joy nationwide.
+          </p>
+          <div class="social-icons">
+            <a href="https://instagram.com/gift_and_grate" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-column">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="bestsellers.html">Bestsellers</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="track-order.html">Track Order</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+          </ul>
+        </div>
+        
+        <!-- Categories -->
+        <div class="footer-column">
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="categories/flowers.html">Flowers</a></li>
+            <li><a href="categories/cakes.html">Cakes</a></li>
+            <li><a href="categories/hampers.html">Hampers</a></li>
+            <li><a href="categories/personalized.html">Personalized Gifts</a></li>
+            <li><a href="categories/corporate.html">Corporate Gifts</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-column">
+          <h4 class="footer-heading">Contact Us</h4>
+          <ul class="contact-info">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Gift Street, Coimbatore, Tamil Nadu, India - 641001</span>
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 98765 43210</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>hello@giftandgrate.com</span>
+            </li>
+            <li class="mt-4">
+              <a href="https://wa.me/919876543210" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                <span>Chat on WhatsApp</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2025 Gift & Grate. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="shipping.html">Shipping Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

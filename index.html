@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gift & Grate | Coimbatore's Premium Gift Store</title>
+<style>
+  /* Reset & basic styles */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    background: #fff7f2;
+    color: #4a4a4a;
+    line-height: 1.6;
+  }
+  a {
+    text-decoration: none;
+    color: #e07a5f;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #d65a3c;
+  }
+
+  header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header h1 {
+    font-size: 1.8rem;
+    color: #e07a5f;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  nav a {
+    margin-left: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #f6e6df 0%, #fff7f2 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .hero h2 {
+    font-size: 2.5rem;
+    color: #d65a3c;
+    margin-bottom: 1rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #7f4a32;
+  }
+  .btn-primary {
+    background: #e07a5f;
+    border: none;
+    color: white;
+    padding: 0.75rem 1.8rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 6px 15px rgba(224, 122, 95, 0.4);
+    transition: background 0.3s ease;
+  }
+  .btn-primary:hover {
+    background: #d65a3c;
+  }
+
+  /* Categories Section */
+  .categories {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 2rem;
+  }
+  .category-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(224, 122, 95, 0.15);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .category-card:hover {
+    transform: translateY(-10px);
+  }
+  .category-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .category-name {
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #d65a3c;
+    text-align: center;
+  }
+
+  /* Footer */
+  footer {
+    background: #f1f1f1;
+    padding: 2rem;
+    text-align: center;
+    color: #7f7f7f;
+    margin-top: 4rem;
+  }
+
+  /* Responsive */
+  @media(max-width: 600px) {
+    header {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    nav a {
+      margin-left: 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Gift & Grate</h1>
+  <nav>
+    <a href="#categories">Shop</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Send Love, Send Joy — Premium Gifts from Coimbatore</h2>
+  <p>Celebrate every occasion with handpicked gifts, fresh flowers, and custom hampers.</p>
+  <button class="btn-primary" onclick="scrollToShop()">Shop Now</button>
+</section>
+
+<section id="categories" class="categories">
+  <div class="category-card" onclick="alert('Explore Flowers')">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Flowers" class="category-img" />
+    <div class="category-name">Flowers</div>
+  </div>
+  <div class="category-card" onclick="alert('Explore Cakes')">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Cakes" class="category-img" />
+    <div class="category-name">Cakes</div>
+  </div>
+  <div class="category-card" onclick="alert('Explore Hampers')">
+    <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=600&q=80" alt="Hampers" class="category-img" />
+    <div class="category-name">Hampers</div>
+  </div>
+  <div class="category-card" onclick="alert('Explore Personalized Gifts')">
+    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80" alt="Personalized Gifts" class="category-img" />
+    <div class="category-name">Personalized Gifts</div>
+  </div>
+</section>
+
+<section id="about" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem; text-align: center;">
+  <h2 style="color: #d65a3c; margin-bottom: 1rem;">About Gift & Grate</h2>
+  <p>Based in Coimbatore, Gift & Grate offers premium and thoughtfully curated gifts to make every moment special. From fresh flowers to delicious cakes and personalized hampers, we deliver joy right to your loved ones’ doorstep.</p>
+</section>
+
+<section id="contact" style="max-width: 600px; margin: 3rem auto; padding: 0 1rem; text-align: center;">
+  <h2 style="color: #d65a3c; margin-bottom: 1rem;">Get in Touch</h2>
+  <p>Questions or custom orders? Reach us at <a href="mailto:contact@giftandgrate.com">contact@giftandgrate.com</a> or via WhatsApp: <a href="https://wa.me/919900000000" target="_blank" rel="noopener">+91 99000 00000</a></p>
+</section>
+
+<footer>
+  &copy; 2025 Gift & Grate, Coimbatore. All rights reserved.
+</footer>
+
+<script>
+  function scrollToShop() {
+    document.getElementById('categories').scrollIntoView({behavior: 'smooth'});
+  }
+</script>
+
+</body>
+</html>
